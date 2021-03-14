@@ -24,8 +24,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittrack", {
 
 
 //Attaching routes 
-require('./routes/api-routes')(app)
-require('./routes/html-routes')(app)
+require('./routes/apiRoutes')(app)
+require('./routes/htmlRoutes')(app)
 
 
 
