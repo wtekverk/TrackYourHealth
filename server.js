@@ -6,17 +6,16 @@ const mongoose = require('mongoose');
 
 //setting port to listen on 
 const PORT = process.env.PORT || 8080;
-
 const app = express();
 app.use(logger("dev"));
-
 app.use(express.urlencoded({
     extended: true
 }));
 app.use(express.json());
-
 app.use(express.static("public"));
 
+
+//setting up info and creation of DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittrack", {
     useNewUrlParser: true,
     useFindAndModify: false
