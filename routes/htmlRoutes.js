@@ -1,32 +1,17 @@
+const db = require("../models");
 const path = require("path");
 
-
-
-module.exports = function (app) {
-
-
-
-
-    //gets info for home page and sets it on first page
-    app.get("/", function (req, res) {
-
-        //use html index
+module.exports = (app) => {
+    //index
+    app.get("/", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
-
-    //gets info for exercise page and sets it on /exercise route
-    app.get("/exercise", function (req, res) {
-
-        //use html exercise 
+    //exercise
+    app.get("/exercise", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/exercise.html"));
     });
-
-
-    //gets stats page info and sets it on /stats route
-    app.get("/stats", function (req, res) {
-
-        //use html stats
+    //stats
+    app.get("/stats", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/stats.html"));
     });
-
-}
+};

@@ -1,11 +1,11 @@
 //Dependencies 
-const express = require('express');
-const logger = require('morgan');
-const mongoose = require('mongoose');
+const express = require("express");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 
-
-//setting port to listen on 
+//port on either heroku 
 const PORT = process.env.PORT || 8080;
+
 const app = express();
 app.use(logger("dev"));
 app.use(express.urlencoded({
@@ -13,23 +13,15 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 app.use(express.static("public"));
-
-
-//setting up info and creation of DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittrack", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
     useNewUrlParser: true,
-    useFindAndModify: false
 });
 
 
+require("./routes/apiRoutes.js")(app);
+require("./routes/htmlRoutes.js")(app);
 
-//Attaching routes 
-require('./routes/apiRoutes')(app)
-require('./routes/htmlRoutes')(app)
-
-
-
-//console log of port running 
+//listening to port
 app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}..`);
-})
+    console.log(`App running on port ${PORT}!`);
+});
