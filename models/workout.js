@@ -2,8 +2,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//create new schema for individual exercise
-//create new schema for new workout
+
 const workoutSchema = new Schema({
     day: {
         type: Date,
