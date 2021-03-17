@@ -30,7 +30,7 @@ module.exports = function (app) {
     });
 
 
-    //get api/workouts/range
+    //get api/workouts/range which navigates to this page 
     app.get("/api/workouts/range", (req, res) => {
         db.Workout.find({}, (err, workouts) => {
             if (err) {
@@ -42,7 +42,7 @@ module.exports = function (app) {
     });
 
 
-    //post api/workouts/range
+    //post api/workouts/range posts the new information to the page 
 
     app.post("/api/workouts/range", (req, res) => {
         db.Workout.create({}, (err, workouts) => {
@@ -55,12 +55,14 @@ module.exports = function (app) {
     });
 
 
-    //put api/workouts/:id 
+    //put api/workouts/:id uses inputted information to update and store the new info
 
     app.put("/api/workouts/:workout", ({
         body,
         params
     }, res) => {
+
+        //pushes the const workout defined in the models 
         db.Workout.findByIdAndUpdate({
                 _id: params.workout
             }, {
@@ -69,7 +71,7 @@ module.exports = function (app) {
                 }
             }, {
                 new: true,
-                useFindAndModify: false
+
             })
             .then((Workout) => {
                 res.json(Workout);
