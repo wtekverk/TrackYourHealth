@@ -24,6 +24,7 @@ module.exports = function (app) {
         //create empty object for workouts in db
         db.Workout.create({})
             .then(data => res.json(data))
+
             .catch(err => {
                 res.json(err)
             })
@@ -32,6 +33,7 @@ module.exports = function (app) {
 
     //get api/workouts/range which navigates to this page 
     app.get("/api/workouts/range", (req, res) => {
+
         db.Workout.find({}, (err, workouts) => {
             if (err) {
                 console.log(err);
@@ -60,6 +62,7 @@ module.exports = function (app) {
     app.put("/api/workouts/:workout", ({
         body,
         params
+
     }, res) => {
 
         //pushes the const workout defined in the models 
