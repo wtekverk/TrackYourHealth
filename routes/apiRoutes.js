@@ -4,9 +4,9 @@ module.exports = function (app) {
 
 
 
-    //get api/workouts
-
+    // getting api/workout rout and running the workouts information 
     app.get("/api/workouts", (req, res) => {
+
         db.Workout.find({}, (err, workouts) => {
             if (err) {
                 console.log(err);
@@ -17,9 +17,9 @@ module.exports = function (app) {
     });
 
 
-    //post api/workouts
 
 
+    //posting information to the api/workouts route 
     app.post("/api/workouts", function (req, res) {
         //create empty object for workouts in db
         db.Workout.create({})

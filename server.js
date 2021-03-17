@@ -3,8 +3,10 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
-//port on either heroku 
+//set port on either heroku or 8080
 const PORT = process.env.PORT || 8080;
+
+
 
 const app = express();
 app.use(logger("dev"));
@@ -18,10 +20,12 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 });
 
 
+
+//attaching required routes 
 require("./routes/apiRoutes.js")(app);
 require("./routes/htmlRoutes.js")(app);
 
-//listening to port
+//listening to port and printing to terminal 
 app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}!`);
+    console.log(`App Listening On: ${PORT}`);
 });
