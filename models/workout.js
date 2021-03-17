@@ -4,10 +4,12 @@ const Schema = mongoose.Schema;
 
 
 const workoutSchema = new Schema({
+    //creating a new schema to store workout and exercise information in with these specific qualities 
     day: {
         type: Date,
         default: () => new Date()
     },
+
     exercises: [{
 
         type: {
